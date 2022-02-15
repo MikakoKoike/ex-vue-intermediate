@@ -3,24 +3,34 @@
     <table>
       <tr>
         <th>球団名</th>
+      </tr>
+      <tr>
         <td>
           <span>{{ currentTeam.teamName }}</span>
         </td>
       </tr>
-      <th>本拠地</th>
-      <td>
-        <span>{{ currentTeam.headquarters }}</span>
-      </td>
+      <tr>
+        <th>本拠地</th>
+      </tr>
+      <tr>
+        <td>
+          <span>{{ currentTeam.headquarters }}</span>
+        </td>
+      </tr>
       <tr>
         <th>発足日</th>
+      </tr>
+      <tr>
         <td>
-          <span>{{ currentTeam.inauguration }}</span>
+          <span>{{ currentTeam.formatInauguration }}</span>
         </td>
       </tr>
       <tr>
         <th>歴史</th>
+      </tr>
+      <tr>
         <td>
-          <span>{{ currentTeam.history }}</span>
+          <pre>{{ currentTeam.history }}</pre>
         </td>
       </tr>
     </table>
@@ -38,11 +48,14 @@ import { Team } from "@/types/team";
 export default class teamsDetail extends Vue {
   private currentTeam = new Team(0, "", "", new Date(), "");
   /**
-   * VuexストアのGetter経由で受け取ったIDから1件のみチーム情報を取得する
+   * VuexストアのGetter経由で受け取ったIDから1件のみチーム情報を取得する.
    */
   created(): void {
     const teamId = Number(this.$route.params.id);
+    //VuexストアのGetter,getTeamsById()メゾッドにteamIdを渡し、
+    //1件のチーム情報を取得し戻り値をcurrentTeamに代入する
     this.currentTeam = this.$store.getters.getTeamsById(teamId);
+    console.dir(JSON.stringify(this.currentTeam));
   }
 }
 </script>

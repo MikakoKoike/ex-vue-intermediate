@@ -10,9 +10,6 @@
         </router-link>
       </tr>
     </table>
-    <!-- <div v-for="team of teamsInfo" v-bind:key="team.id">
-      {{ team.teamName }}
-    </div> -->
   </div>
 </template>
 

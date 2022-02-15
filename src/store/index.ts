@@ -158,7 +158,8 @@ export default new Vuex.Store({
       return state.teams;
     },
     //チームのIDから一件検索して返す
-    getTemasById(state) {
+
+    getTeamsById(state) {
       return (id: number) => {
         //渡されたチームのidを一件のみ返す
         return state.teams.filter((team) => team.id === id)[0];
